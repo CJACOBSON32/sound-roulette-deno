@@ -1,3 +1,7 @@
+.idea/
+
+deno.lock
+
 # Logs
 logs
 *.log
