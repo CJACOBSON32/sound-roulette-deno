@@ -1,21 +1,18 @@
 // Learn more at https://docs.deno.com/runtime/manual/examples/module_metadata#concepts
+import { Client, Events, GatewayIntentBits } from "npm:discord.js@14.25.1";
+import * as path from "jsr:@std/path@1.1.3";
+import {readCommands} from "./utils/initialization.ts";
+
+
 if (import.meta.main) {
-    const text = Deno.readTextFileSync("./.env");
+    const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
-    console.log(".env text:\n", text, "\n");
+    client.once(Events.ClientReady, (readyClient) => {
+        console.log(`Ready! Logged in as ${readyClient.user.tag}`);
+    });
 
-    console.log("DISCORD_TOKEN exists: ", Deno.env.has("DISCORD_TOKEN"));
-    console.log("DISCORD_TOKEN = ", Deno.env.get("DISCORD_TOKEN"));// src/server.ts
+    client.login(Deno.env.get("DISCORD_TOKEN"));
 
-    if (import.meta.main) {
-      const port = Number(Deno.env.get("PORT") ?? 8000);
-      console.log(`Listening on http://localhost:${port}`);
-
-      Deno.serve({ port }, (req) => {
-        return new Response("Hello, world!", {
-          status: 200,
-          headers: { "content-type": "text/plain; charset=utf-8" },
-        });
-      });
-    }
+    const foldersPath = path.join(import.meta.dirname ?? "", 'commands');
+    readCommands(foldersPath);
 }
