@@ -1,5 +1,5 @@
-import {SlashCommandBuilder} from "npm:@discordjs/builders@1.13.0";
-import {ChatInputCommandInteraction} from "npm:discord.js@14.25.1";
+import { SlashCommandBuilder } from "@discordjs/builders";
+import { ChatInputCommandInteraction } from "discord.js";
 
 
 export const data = new SlashCommandBuilder().setName('helloWorld').setDescription('Replies with \"Hello world!\"');

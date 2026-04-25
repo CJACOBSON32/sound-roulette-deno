@@ -1,7 +1,7 @@
-import {Interaction} from "npm:discord.js@14.25.1";
-import {SlashCommandBuilder} from "npm:@discordjs/builders@1.13.0";
+import { Interaction } from "discord.js";
+import { SlashCommandBuilder } from "@discordjs/builders";
 import * as helloWorld from "../commands/helloWorld.ts";
-import {Collection} from "npm:@discordjs/collection@2.1.1";
+import { Collection } from "@discordjs/collection";
 
 export type CommandDefinition = {
     data: SlashCommandBuilder,

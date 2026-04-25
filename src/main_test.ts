@@ -1,9 +1,9 @@
-import { assertEquals } from "@std/assert";
+import { expect, test } from "bun:test";
 
 function add(a: number, b: number): number {
     return a + b;
 }
 
-Deno.test(function addTest() {
-  assertEquals(add(2, 3), 5);
+test("addTest", () => {
+    expect(add(2, 3)).toBe(5);
 });

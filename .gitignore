@@ -1,6 +1,8 @@
 .idea/
 
-deno.lock
+# Bun
+bun.lock
+bun.lockb
 
 # Logs
 logs
